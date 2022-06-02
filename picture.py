@@ -59,17 +59,34 @@ class Picture:
     return Picture(figura)
 
   def under(self, p):
-    """ Devuelve una nueva figura poniendo la figura p sobre la
-        figura actual """
-    return Picture(None)
+    figura = []
+    aux = ""
+    for i in range(0, len(p.img)):
+      for j in range(0, len(p.img[i])):
+        if(p.img[i][j] != " "):
+          aux = aux + p.img[i][j]
+        else:
+          aux = aux + self.img[i][j]
+      figura.append(aux)
+      aux = ""
+    return Picture(figura)
   
   def horizontalRepeat(self, n):
-    """ Devuelve una nueva figura repitiendo la figura actual al costado
-        la cantidad de veces que indique el valor de n """
-    return Picture(None)
+    figura = []
+    aux = ""
+    for i in range(0, len(self.img)):
+      for j in range(0, n+1):
+        aux = aux + self.img[i]
+      figura.append(aux)
+      aux = ""
+    return Picture(figura)
 
   def verticalRepeat(self, n):
-    return Picture(None)
+    figura = []
+    for i in range(0, n+1):
+      for j in range(0, len(self.img)):
+        figura.append(self.img[j])
+    return Picture(figura)
 
   #Extra: Sólo para realmente viciosos 
   def rotate(self):
